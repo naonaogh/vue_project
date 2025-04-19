@@ -27,23 +27,29 @@
         </router-link>
       </v-list>
     </v-navigation-drawer>
+
     <v-app-bar app dark color="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      
+      <!-- Добавляем кнопку "Home" перед v-spacer -->
+      <v-toolbar-title>
+        <v-btn to="/" color="white">Home</v-btn>
+      </v-toolbar-title>
+
       <v-spacer></v-spacer>
+
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
           v-for="link in links"
           :key="link.title"
           :to="link.url"
         >
-          <v-icon
-            start
-            :icon="link.icon"
-          ></v-icon>
+          <v-icon start :icon="link.icon"></v-icon>
           {{ link.title }}
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
+
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -62,7 +68,7 @@ export default {
         {title: "New ad", icon: "mdi-note-plus-outline", url: "/new"},
         {title: "My ads", icon: "mdi-view-list-outline", url: "/list"}
       ]
-    }
+    };
   }
 }
 </script>
